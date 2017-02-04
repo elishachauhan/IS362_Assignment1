@@ -1,5 +1,7 @@
 -- Assignment 1
 
+-- Part 1
+
 -- Question 1
 SELECT COUNT(speed), MIN(speed), MAX(speed) FROM planes;
 
@@ -36,8 +38,20 @@ SELECT planes.manufacturer, SUM(flights.distance), airlines.name
     ON airlines.carrier = flights.carrier
 	WHERE flights.year = '2013' AND flights.month ='7' AND flights.day ='5' 
 	GROUP BY planes.manufacturer;
+    
+ -- Part 2
+ 
+SELECT origin, avg(distance)
+FROM flights
+GROUP BY origin
 
+INTO OUTFILE 'Users/Public/Assignment1.csv'
 
+FIELDS TERMINATED BY ','
+
+ENCLOSED BY '"'
+
+LINES TERMINATED BY '\n';
 
 
     
